@@ -3,9 +3,31 @@ package com.company;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
-        Inventar ruksak = new Inventar(); //voláme konstruktorovou funkci, proto to má závorky;
+        Mapa mapa = new Mapa();
+        Jdi jdi = new Jdi(mapa);
+        Scanner nacitej = new Scanner(System.in);
+        while (nacitej.hasNextLine()) {
+            String akce = nacitej.nextLine();
+            String[] rozdeleni = akce.split(" ");
+            if (jdi.rozumimPrikazu(rozdeleni)) {
+                jdi.proved(rozdeleni);
+
+            }
+
+
+        }
+    }
+}
+
+
+
+
+
+
+
+/* public static void main(String[] args) {//voláme konstruktorovou funkci, proto to má závorky;
+        Inventar ruksak = new Inventar();
         ruksak.pridej("brnění");
         ruksak.pridej("čepice");
         ruksak.pridej("kalhoty");
@@ -13,11 +35,7 @@ public class Main {
                                           //treti hodina
         ruksak.odeber("brnění");
                                             // ruksak.vypiš();  -bylo smazáno
-
-
-
-
-
+        System.out.println("huuuu pyco");
 
         Scanner nacitej = new Scanner(System.in);
         while (nacitej.hasNextLine()) {
@@ -44,9 +62,20 @@ public class Main {
                     System.out.println("hele kámo nemáš " + rozdeleni[1]);
                 }
             }
-
-
         }
-    }
 }
-// DU:  povolit co může dělat a ověřit, že to dělá
+}
+
+
+
+//       Mapa muzu = new Mapa();
+  //      Scanner nacite = new Scanner(System.in);
+//        while (nacite.hasNextLine()) {
+//            String akc = nacite.nextLine();
+//            if (akc.equals("kam muzu")) {
+//                System.out.println("můžeš na:");
+//                muzu.vypsat();
+
+
+// DU:  povolit co může dělat a ověřit, že to dělá+
+*/

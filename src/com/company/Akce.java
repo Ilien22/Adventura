@@ -24,5 +24,5 @@ public class Akce { // každá akce nějekej příkaz a ... - konstruktor pro dv
             return false;           // return vrátí to za tím
         }     // Testování - Junit testování
     }
-    public void proved(String[] parametry){}
+
 }

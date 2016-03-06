@@ -22,17 +22,21 @@ public class Pozice {
         Pozice Poz = (Pozice) obj;
 
 
-        if (this.x == getX() && this.y == getY()) {   //nemusí být this
+        if (Poz.x == getX() && Poz.y == getY()) {   //nemusí být this
             return true;
-
 
         } else {
             return false;
         }
+    }
 
+    @Override
+    public String toString() {
+        return getX()+","+getY();
     }
 
     public int getX() {
+
         return x;
     }
 
