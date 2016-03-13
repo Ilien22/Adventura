@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.akce.Jdi;
+
 import java.util.Scanner;
 
 public class Main {
@@ -14,14 +16,12 @@ public class Main {
                 jdi.proved(rozdeleni);
 
             }
-
-
         }
     }
 }
 
 
-
+// Klasicky se metoda píše tak,  že je property, konstruktor a pak zbytek
 
 
 
