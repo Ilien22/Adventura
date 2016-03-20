@@ -1,22 +1,38 @@
 package com.company;
 
 import com.company.akce.Jdi;
+import com.company.akce.Zvedni;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Mapa mapa = new Mapa();
+        Inventar inventar = new Inventar();
+        Mapa mapa = new Mapa(inventar);
         Jdi jdi = new Jdi(mapa);
+        Zvedni zvedni = new Zvedni(mapa, inventar);
+
         Scanner nacitej = new Scanner(System.in);
         while (nacitej.hasNextLine()) {
             String akce = nacitej.nextLine();
             String[] rozdeleni = akce.split(" ");
-            if (jdi.rozumimPrikazu(rozdeleni)) {
+            /*if (jdi.rozumimPrikazu(rozdeleni)) {
                 jdi.proved(rozdeleni);
-
+            }*/
+            Lokace docasne = mapa.aktualniLokace();
+            if (docasne.jdeProvest(rozdeleni[0])){
+                if (jdi.rozumimPrikazu(rozdeleni)) {
+                    jdi.proved(rozdeleni);
+                }
+                if (zvedni.rozumimPrikazu(rozdeleni)){
+                    zvedni.proved(rozdeleni);
+                }
+            }
+            else {
+                System.out.println("tohle tady nemuzes udelat");
             }
         }
+
     }
 }
 
@@ -26,7 +42,7 @@ public class Main {
 
 
 
-/* public static void main(String[] args) {//voláme konstruktorovou funkci, proto to má závorky;
+/* public static void main(String[] args) { //voláme konstruktorovou funkci, proto to má závorky;
         Inventar ruksak = new Inventar();
         ruksak.pridej("brnění");
         ruksak.pridej("čepice");
@@ -34,15 +50,15 @@ public class Main {
         ruksak.pridej("tunika");
                                           //treti hodina
         ruksak.odeber("brnění");
-                                            // ruksak.vypiš();  -bylo smazáno
+                                            // ruksak.vypis();  -bylo smazáno
         System.out.println("huuuu pyco");
 
         Scanner nacitej = new Scanner(System.in);
         while (nacitej.hasNextLine()) {
             String akce = nacitej.nextLine();
-            if (akce.equals("vypiš")) {
+            if (akce.equals("vypis")) {
                 System.out.println("V ruksaku mám:");
-                ruksak.vypiš();
+                ruksak.vypis();
             }
             String[] rozdeleni = akce.split(" ");
             if (rozdeleni[0].equals("seber")){

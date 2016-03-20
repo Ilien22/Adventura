@@ -14,7 +14,7 @@ public class Jdi extends Akce {  //extends Akce - znamená, že tahle třída je
         this.mapa = mapa;
     }
 
-    Mapa mapa;
+    Mapa mapa; //tímhle vytvořím políčko mapa v třídě
 
     public void proved(String[] parametry) {
         if (!mapa.muzuJit(parametry[1])) {
@@ -27,4 +27,4 @@ public class Jdi extends Akce {  //extends Akce - znamená, že tahle třída je
 
 
 }
-//konstruktor říká, že někdo z vnějšku tomu dá instanci mapy a Mapa mapaje proto, aby si ji třída Jdi uchovala
+//konstruktor říká, že někdo z vnějšku tomu dá instanci mapy a Mapa mapa je proto, aby si ji třída Jdi uchovala

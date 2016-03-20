@@ -31,6 +31,13 @@ public class Pozice {
     }
 
     @Override
+    public int hashCode() {
+        int result = x;
+        result = 31 * result + y;
+        return result;
+    }
+
+    @Override
     public String toString() {
         return getX()+","+getY();
     }

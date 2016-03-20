@@ -23,7 +23,7 @@ public class Inventar {
         predmety.add(vec);
     }
 
-    public void vypiš (){
+    public void vypis(){
         for (Object vec:predmety) { //hranatý závork umožní přidat kus kódu pro každou věc
             System.out.println(vec);
         }
