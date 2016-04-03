@@ -14,6 +14,8 @@ public class Main {
         Zvedni zvedni = new Zvedni(mapa, hrdina);
         Poloz poloz = new Poloz(mapa, hrdina);
 
+        System.out.println("Vítej dobrodruhu!");
+
         Scanner nacitej = new Scanner(System.in);
         while (nacitej.hasNextLine()) {
             String akce = nacitej.nextLine();
