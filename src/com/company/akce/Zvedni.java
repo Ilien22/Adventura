@@ -1,5 +1,6 @@
 package com.company.akce;
 
+import com.company.Hrdina;
 import com.company.Inventar;
 import com.company.Lokace;
 import com.company.Mapa;
@@ -8,10 +9,10 @@ import com.company.Mapa;
  * Created by Tibor on 20. 3. 2016.
  */
 public class Zvedni extends Akce {
-    public Zvedni (Mapa mapa, Inventar inventar) {
+    public Zvedni (Mapa mapa, Hrdina hrdina) {
         super("zvedni", 1);
         this.mapa = mapa;
-        this.inventar = inventar;
+        this.inventar = hrdina.getInventar();
     }
     Mapa mapa; //tímhle vytvořím políčko mapa v třídě
     Inventar inventar;

@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.akce.Jdi;
+import com.company.akce.Poloz;
 import com.company.akce.Zvedni;
 
 import java.util.ArrayList;
@@ -16,9 +17,10 @@ public class Mapa {  //souradnice x,y pole, a kam muzeme jit
     Map<Pozice, Lokace> povoleneLokace; //ArrayList přpsán na mapu; přidáno <> abysme tam mohli definovat klíč a hodnotu (proto aby jsme nemuseli přtypovávat vracení na aktualniLokace
 
 
-    public Mapa(Inventar inventar) {
+    public Mapa(Hrdina hrdina) {
         Jdi prikazJdi = new Jdi(this);
-        Zvedni prikazZvedni = new Zvedni(this,inventar);
+        Zvedni prikazZvedni = new Zvedni(this, hrdina);
+        Poloz prikazPoloz = new Poloz(this, hrdina);
 
         ArrayList jdi = new ArrayList<>();
         jdi.add(prikazJdi.getPrikaz());
@@ -31,10 +33,15 @@ public class Mapa {  //souradnice x,y pole, a kam muzeme jit
         predmety.add("klacek");
         predmety.add("trpaslik");
 
+        ArrayList jdiZvedniPoloz = new ArrayList();
+        jdiZvedniPoloz.add(prikazJdi.getPrikaz());
+        jdiZvedniPoloz.add(prikazZvedni.getPrikaz());
+        jdiZvedniPoloz.add(prikazPoloz.getPrikaz());
+
         povoleneLokace = new HashMap();
-        povoleneLokace.put(new Pozice(0, 1), new Lokace(jdi));   //přepsáno add na put, protože Map neumí add
-        povoleneLokace.put(new Pozice(1, 0), new Lokace(jdi));
-        povoleneLokace.put(new Pozice(1, 1), new Lokace(jdiZvedni, predmety));
+        povoleneLokace.put(new Pozice(0, 1), new Lokace(jdi, new Bytost("Bandita",5,2,1))); //přepsáno add na put, protože Map neumí add
+        povoleneLokace.put(new Pozice(1, 0), new Lokace(jdi, new Bytost("Vlk",3,1,2)));
+        povoleneLokace.put(new Pozice(1, 1), new Lokace(jdiZvedniPoloz, predmety));
         povoleneLokace.put(new Pozice(1, 2), new Lokace(jdi));
         povoleneLokace.put(new Pozice(2, 1), new Lokace(jdi));
         aktualniPozice = new Pozice(1, 1);
@@ -77,6 +84,7 @@ public class Mapa {  //souradnice x,y pole, a kam muzeme jit
         } else
             return aktualniPozice;
     }
+
 
 
     // u věcí typu list můžeme definovat jen určitý klíč (třeba auta) a jen určitý

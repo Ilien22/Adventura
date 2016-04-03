@@ -24,7 +24,7 @@ public class Inventar {
     }
 
     public void vypis(){
-        for (Object vec:predmety) { //hranatý závork umožní přidat kus kódu pro každou věc
+        for (Object vec:predmety) {     //hranatý závork umožní přidat kus kódu pro každou věc
             System.out.println(vec);
         }
     }

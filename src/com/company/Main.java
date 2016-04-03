@@ -1,16 +1,18 @@
 package com.company;
 
 import com.company.akce.Jdi;
+import com.company.akce.Poloz;
 import com.company.akce.Zvedni;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Inventar inventar = new Inventar();
-        Mapa mapa = new Mapa(inventar);
+        Hrdina hrdina = new Hrdina();
+        Mapa mapa = new Mapa(hrdina);
         Jdi jdi = new Jdi(mapa);
-        Zvedni zvedni = new Zvedni(mapa, inventar);
+        Zvedni zvedni = new Zvedni(mapa, hrdina);
+        Poloz poloz = new Poloz(mapa, hrdina);
 
         Scanner nacitej = new Scanner(System.in);
         while (nacitej.hasNextLine()) {
@@ -26,6 +28,9 @@ public class Main {
                 }
                 if (zvedni.rozumimPrikazu(rozdeleni)){
                     zvedni.proved(rozdeleni);
+                }
+                if (poloz.rozumimPrikazu(rozdeleni)){
+                    poloz.proved(rozdeleni);
                 }
             }
             else {

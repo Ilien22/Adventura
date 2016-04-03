@@ -1,5 +1,6 @@
 package com.company.akce;
 
+import com.company.Bytost;
 import com.company.Mapa;
 import com.company.Pozice;
 import com.company.akce.Akce;
@@ -15,6 +16,7 @@ public class Jdi extends Akce {  //extends Akce - znamená, že tahle třída je
     }
 
     Mapa mapa; //tímhle vytvořím políčko mapa v třídě
+    Bytost bytost;
 
     public void proved(String[] parametry) {
         if (!mapa.muzuJit(parametry[1])) {
@@ -22,9 +24,8 @@ public class Jdi extends Akce {  //extends Akce - znamená, že tahle třída je
         } else {
             Pozice nova = mapa.jdi(parametry[1]);  //na instanci mapa zavolám instanci jdi
             System.out.println("Došels na " + nova);
+            mapa.aktualniLokace().vypis();
         }
     }
-
-
 }
 //konstruktor říká, že někdo z vnějšku tomu dá instanci mapy a Mapa mapa je proto, aby si ji třída Jdi uchovala
