@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.akce.Jdi;
 import com.company.akce.Poloz;
+import com.company.akce.Utok;
 import com.company.akce.Zvedni;
 
 import java.util.Scanner;
@@ -13,6 +14,7 @@ public class Main {
         Jdi jdi = new Jdi(mapa);
         Zvedni zvedni = new Zvedni(mapa, hrdina);
         Poloz poloz = new Poloz(mapa, hrdina);
+        Utok utok = new Utok(mapa, hrdina);
 
         System.out.println("Vítej dobrodruhu!");
 
@@ -23,26 +25,37 @@ public class Main {
             /*if (jdi.rozumimPrikazu(rozdeleni)) {
                 jdi.proved(rozdeleni);
             }*/
+
             Lokace docasne = mapa.aktualniLokace();
-            if (docasne.jdeProvest(rozdeleni[0])){
+            if (rozdeleni[0].equals("co") && rozdeleni[1].equals("vidim?")) {
+                mapa.aktualniLokace().vypis();
+            } else if (docasne.jdeProvest(rozdeleni[0])) {
                 if (jdi.rozumimPrikazu(rozdeleni)) {
                     jdi.proved(rozdeleni);
                 }
-                if (zvedni.rozumimPrikazu(rozdeleni)){
+                if (zvedni.rozumimPrikazu(rozdeleni)) {
                     zvedni.proved(rozdeleni);
                 }
-                if (poloz.rozumimPrikazu(rozdeleni)){
+                if (poloz.rozumimPrikazu(rozdeleni)) {
                     poloz.proved(rozdeleni);
                 }
-            }
-            else {
+                if (utok.rozumimPrikazu(rozdeleni)) {
+                    utok.proved(rozdeleni);
+                }
+            } else {
                 System.out.println("tohle tady nemuzes udelat");
             }
-        }
 
+
+        }
     }
 }
 
+
+
+
+
+/*
 
 // Klasicky se metoda píše tak,  že je property, konstruktor a pak zbytek
 

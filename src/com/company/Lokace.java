@@ -30,7 +30,6 @@ public class Lokace { //důležitý kam můžeme jít a co tam můžeme provád�
         this.povoleneAkce = akce;
         this.bytost = bytost;
         this.predmety = predmety;
-
     }
 
     public boolean jdeProvest (String akce) { //přepsáno Akce na String
@@ -57,6 +56,12 @@ public class Lokace { //důležitý kam můžeme jít a co tam můžeme provád�
         else {System.out.println("Nic tu není");
         }
     }
+    public Bytost getBytost (){
+        return bytost;
+    }
+    public void odeberBytost () { //odeber predmet z lokace, ne z inventare
+        predmety.remove(bytost);
+}
 }
 
 

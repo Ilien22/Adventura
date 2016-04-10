@@ -44,7 +44,5 @@ public class Akce { // každá akce nějekej příkaz a ... - konstruktor pro dv
     public int getPocetParametru() {
         return pocetParametru;
     }
-
-
 }
 // . - pokud je to odkaz na nějaký objekt

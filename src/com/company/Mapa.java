@@ -2,6 +2,7 @@ package com.company;
 
 import com.company.akce.Jdi;
 import com.company.akce.Poloz;
+import com.company.akce.Utok;
 import com.company.akce.Zvedni;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class Mapa {  //souradnice x,y pole, a kam muzeme jit
         Jdi prikazJdi = new Jdi(this);
         Zvedni prikazZvedni = new Zvedni(this, hrdina);
         Poloz prikazPoloz = new Poloz(this, hrdina);
+        Utok prikazUtok = new Utok(this, hrdina);
 
         ArrayList jdi = new ArrayList<>();
         jdi.add(prikazJdi.getPrikaz());
@@ -29,7 +31,7 @@ public class Mapa {  //souradnice x,y pole, a kam muzeme jit
         jdiZvedni.add(prikazJdi.getPrikaz());
         jdiZvedni.add(prikazZvedni.getPrikaz());
         ArrayList predmety = new ArrayList();  //provizorně
-        predmety.add("veverka") ;
+        predmety.add("veverka");
         predmety.add("klacek");
         predmety.add("trpaslik");
 
@@ -38,15 +40,20 @@ public class Mapa {  //souradnice x,y pole, a kam muzeme jit
         jdiZvedniPoloz.add(prikazZvedni.getPrikaz());
         jdiZvedniPoloz.add(prikazPoloz.getPrikaz());
 
+        ArrayList jdiUtok = new ArrayList();
+        jdiUtok.add(prikazJdi.getPrikaz());
+        jdiUtok.add(prikazUtok.getPrikaz());
+
         povoleneLokace = new HashMap();
-        povoleneLokace.put(new Pozice(0, 1), new Lokace(jdi, new Bytost("Bandita",5,2,1))); //přepsáno add na put, protože Map neumí add
-        povoleneLokace.put(new Pozice(1, 0), new Lokace(jdi, new Bytost("Vlk",3,1,2)));
+        povoleneLokace.put(new Pozice(0, 1), new Lokace(jdiUtok, new Bytost("Bandita", 5, 2, 1))); //přepsáno add na put, protože Map neumí add
+        povoleneLokace.put(new Pozice(1, 0), new Lokace(jdiUtok, new Bytost("Vlk", 3, 1, 2)));
         povoleneLokace.put(new Pozice(1, 1), new Lokace(jdiZvedniPoloz, predmety));
-        povoleneLokace.put(new Pozice(1, 2), new Lokace(jdi));
-        povoleneLokace.put(new Pozice(2, 1), new Lokace(jdi));
+        povoleneLokace.put(new Pozice(1, 2), new Lokace(jdiUtok));
+        povoleneLokace.put(new Pozice(2, 1), new Lokace(jdiUtok));
         aktualniPozice = new Pozice(1, 1);
     }
-    public Lokace aktualniLokace () {
+
+    public Lokace aktualniLokace() {
         return povoleneLokace.get(aktualniPozice); //z povolenejch lokací dostáváme hodnotu ke klíči (Pozice)
     }
 
@@ -83,7 +90,9 @@ public class Mapa {  //souradnice x,y pole, a kam muzeme jit
             return aktualniPozice;
         } else
             return aktualniPozice;
+
     }
+}
 
 
 
@@ -92,8 +101,7 @@ public class Mapa {  //souradnice x,y pole, a kam muzeme jit
 
 
 //Map - interfaces implementaacema (?), funguje jako klíč + hodnodta (Pozice+Lokace)
-    
-}
+
 
 //  public void vypsat (){
 //      for (Object Pozice:povoleneLokace) { //hranatý závork umožní přidat kus kódu pro každou věc
