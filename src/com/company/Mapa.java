@@ -35,21 +35,23 @@ public class Mapa {  //souradnice x,y pole, a kam muzeme jit
         predmety.add("klacek");
         predmety.add("trpaslik");
 
-        ArrayList jdiZvedniPoloz = new ArrayList();
-        jdiZvedniPoloz.add(prikazJdi.getPrikaz());
-        jdiZvedniPoloz.add(prikazZvedni.getPrikaz());
-        jdiZvedniPoloz.add(prikazPoloz.getPrikaz());
+        ArrayList jdiZvedniPolozUtok = new ArrayList();
+        jdiZvedniPolozUtok.add(prikazJdi.getPrikaz());
+        jdiZvedniPolozUtok.add(prikazZvedni.getPrikaz());
+        jdiZvedniPolozUtok.add(prikazPoloz.getPrikaz());
+        jdiZvedniPolozUtok.add(prikazUtok.getPrikaz());
+
 
         ArrayList jdiUtok = new ArrayList();
         jdiUtok.add(prikazJdi.getPrikaz());
         jdiUtok.add(prikazUtok.getPrikaz());
 
         povoleneLokace = new HashMap();
-        povoleneLokace.put(new Pozice(0, 1), new Lokace(jdiUtok, new Bytost("Bandita", 5, 2, 1))); //přepsáno add na put, protože Map neumí add
-        povoleneLokace.put(new Pozice(1, 0), new Lokace(jdiUtok, new Bytost("Vlk", 3, 1, 2)));
-        povoleneLokace.put(new Pozice(1, 1), new Lokace(jdiZvedniPoloz, predmety));
-        povoleneLokace.put(new Pozice(1, 2), new Lokace(jdiUtok));
-        povoleneLokace.put(new Pozice(2, 1), new Lokace(jdiUtok));
+        povoleneLokace.put(new Pozice(0, 1), new Lokace(jdiZvedniPolozUtok, new Bytost("Bandita", 5, 2, 1))); //přepsáno add na put, protože Map neumí add
+        povoleneLokace.put(new Pozice(1, 0), new Lokace(jdiZvedniPolozUtok, new Bytost("Vlk", 3, 1, 2)));
+        povoleneLokace.put(new Pozice(1, 1), new Lokace(jdiZvedniPolozUtok, new Bytost("Drak", 10,10, 10)));
+        povoleneLokace.put(new Pozice(1, 2), new Lokace(jdiZvedniPolozUtok, new Bytost("Blbeček", 3,1,1)));
+        povoleneLokace.put(new Pozice(2, 1), new Lokace(jdiZvedniPolozUtok));
         aktualniPozice = new Pozice(1, 1);
     }
 

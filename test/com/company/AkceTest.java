@@ -16,7 +16,5 @@ public class AkceTest {
         String[] prikazy = "jdi sever".split (" ");     //teĎ si ukážeme, jak se definuje pole
 
         assertEquals(true, testovana.rozumimPrikazu(prikazy)); //funkce, která ověřuje rovnosti funkcí, má volitelný parametr, který vypíše v případě neúspěchu
-
-
     }
 }

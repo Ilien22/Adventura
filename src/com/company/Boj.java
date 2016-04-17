@@ -8,10 +8,10 @@ public class Boj {
         this.obranaHrdiny(hrdina, bytost, lokace, mapa); //nemuže to být napsáno naopak,protože v signatuře metody je to v tomhle pořádí (private void obranaHrdiny (Hrdina hrdina, Bytost bytost))
     }
     private void utokHrdiny(Hrdina hrdina, Bytost bytost, Lokace lokace, Mapa mapa) {
-        int utok = hrdina.getUtok();        //slova utok a obranaHrdiny žijou jen v téhle jedné malinké netodě
+        int utok = hrdina.getUtok();        //slova utok a obranaHrdiny žijou jen v téhle jedné malinké metodě
         int obrana = bytost.getObrana();
-        int hodKostkouHrdiny = (int) Math.round(Math.random()); //přetypovávání z long na int
-        int hodKostkouBytosti = (int) Math.round(Math.random());
+        int hodKostkouHrdiny = (int) Math.round(Math.random()*6); //přetypovávání z long na int
+        int hodKostkouBytosti = (int) Math.round(Math.random()*6);
         int zivotyBytosti = bytost.getZivoty();
         if (utok+hodKostkouHrdiny>obrana+hodKostkouBytosti){
             bytost.setZivoty (zivotyBytosti - ((utok+hodKostkouHrdiny)-(obrana+hodKostkouBytosti)));
@@ -19,10 +19,6 @@ public class Boj {
         }
         else {
             System.out.println("Ubránila se, mrcha");
-        }
-        if (zivotyBytosti <= 0){
-            lokace.odeberBytost();
-            System.out.println("Jsi hrdina, zabil jsi ji");
         }
     }
     private void obranaHrdiny(Hrdina hrdina, Bytost bytost, Lokace lokace, Mapa mapa){ //celý tenhle řádek je signatura metody
@@ -40,8 +36,15 @@ public class Boj {
         }
         if (hrdina.getZivoty() <= 0){
             System.out.println("Účast na Tvém pohřbu byla veliká. Začínáš zase od začátku");
+            mapa.aktualniLokace().pridejPredmet ("Hrobeček");
             mapa.aktualniPozice = new Pozice(1, 1);
             hrdina.setZivoty(10);
+        }
+        if (bytost.getZivoty() <= 0){   //nefunguje zivotyBytosti <= 0; protože tím dostanu ty nepřepsaný životy
+            System.out.println("Jsi hrdina, zabil jsi ji :)");
+            mapa.aktualniLokace().pridejPredmet ("mrtvola");
+            lokace.odeberBytost();
+
         }
     }
 }

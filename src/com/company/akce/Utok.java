@@ -20,6 +20,6 @@ public class Utok extends Akce {
     public void proved(String[] parametry){
         Lokace aktualniLokace = mapa.aktualniLokace();
         Bytost bytost = aktualniLokace.getBytost();
-        boj.kolo(hrdina, bytost, lokace, mapa);
+        boj.kolo(hrdina, bytost, aktualniLokace, mapa); //aktualní lokace, ne lokace, protože lokaci nic nepřiřezuju
     }
 }

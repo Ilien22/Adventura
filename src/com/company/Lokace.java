@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.akce.Akce;
+import com.company.akce.Utok;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,8 +61,10 @@ public class Lokace { //důležitý kam můžeme jít a co tam můžeme provád�
         return bytost;
     }
     public void odeberBytost () { //odeber predmet z lokace, ne z inventare
-        predmety.remove(bytost);
-}
+        bytost = null;
+        povoleneAkce = new ArrayList<>(povoleneAkce);
+        povoleneAkce.remove("utok"); //něco v uvozovkách je instance řetězcejdi
+    }
 }
 
 
