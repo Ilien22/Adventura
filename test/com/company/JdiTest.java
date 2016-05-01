@@ -33,3 +33,7 @@ public class JdiTest { //testovací sekvence jsou vždy void a public
         assertEquals(new Pozice(1, 0), mapa.aktualniPozice);
     }
 }
+
+/* Balíčky v javě - pro rozlišení tříd od sebe s podobným názvem systém package. Root je src, a ten obsahuje package. Balíčky se pojmenovávají podle internetové stránky (např Balhar.net) pro kterou to bylo děláno jako net, podtém Balhar, pod tím samotné třídy
+Importy - abych si ušetřila písmenka, tak můžu něco naimportovat a pak nemusím psát ve stylu com.com.company.akce.jdi
+ */
